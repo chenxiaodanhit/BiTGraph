@@ -8,9 +8,9 @@ Biased Temporal Convolution Graph Network that jointly captures the temporal dep
 
 
 ## Overview
-|![Figure1](https://github.com/chenxiaodanhit/BiaTCGNet/tree/main/images/Framework_GCN.pdf)|
+|![Figure1](images/Framework_GCN.png)|
 |:--:| 
-| *Figure 1. Overall structure of FEDformer* |
+| *Figure 1-a Overall structure of BiaTCGNet, Figure 1-b the structure of Biased GCN module.* |
 
 |![image](https://user-images.githubusercontent.com/44238026/171343471-7dd079f3-8e0e-442b-acc1-d406d4a3d86a.png) | ![image](https://user-images.githubusercontent.com/44238026/171343510-a203a1a1-db78-4084-8c36-62aa0c6c7ffe.png)
 |:--:|:--:|
