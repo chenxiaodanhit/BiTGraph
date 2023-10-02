@@ -8,7 +8,7 @@ Biased Temporal Convolution Graph Network that jointly captures the temporal dep
 
 
 ## Overview
-|![Figure1](images/Framework_GCN.png)|
+|![Figure1](images/Framework.png)|
 |:--:| 
 | *Figure 1-a Overall structure of BiaTCGNet, Figure 1-b the structure of Biased GCN module.* |
 
