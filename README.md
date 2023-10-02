@@ -12,9 +12,6 @@ Biased Temporal Convolution Graph Network that jointly captures the temporal dep
 |:--:| 
 | *Figure 1-a Overall structure of BiaTCGNet, Figure 1-b the structure of Biased GCN module.* |
 
-|![image](https://user-images.githubusercontent.com/44238026/171343471-7dd079f3-8e0e-442b-acc1-d406d4a3d86a.png) | ![image](https://user-images.githubusercontent.com/44238026/171343510-a203a1a1-db78-4084-8c36-62aa0c6c7ffe.png)
-|:--:|:--:|
-| *Figure 2. Frequency Enhanced Block (FEB)* | *Figure 3. Frequency Enhanced Attention (FEA)* |
 
 
 ## Main Results
@@ -24,7 +21,7 @@ Biased Temporal Convolution Graph Network that jointly captures the temporal dep
 ## Get Started
 
 1. Install Python>=3.8, PyTorch 1.9.0.
-2. Download data. You can obtain all the six benchmarks from [[Autoformer](https://github.com/thuml/Autoformer)] or [[Informer](https://github.com/zhouhaoyi/Informer2020)].
+2. Download data.
 3. Train the model. We provide the experiment scripts of all benchmarks under the folder `./scripts`. You can reproduce the multivariate and univariate experiment results by running the following shell code separately:
 
 ```bash
