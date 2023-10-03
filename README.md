@@ -22,9 +22,12 @@ Biased Temporal Convolution Graph Network that jointly captures the temporal dep
 
 ## Get Started
 
-1. Install Python>=3.8, PyTorch 1.9.0.
+1. Install Python>=3.8, PyTorch 1.8.0.
 2. Download data.
-3. Train the model. 
+3. Train the model.
+   python main.py --epochs 200 --mask_ratio 0.2
+4. Test the model.
+   python test_forecasting.py --epochs 200 --mask_ratio 0.2
 
 
 
