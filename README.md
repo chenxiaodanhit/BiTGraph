@@ -2,7 +2,7 @@
 The code for Biased Temporal Convolution Graph Network for Time Series Forecasting with Missing Values. 
 
 
-Biased Temporal Convolution Graph Network that jointly captures the temporal dependencies and spatial structure. In particular, we inject bias into the two carefully developed modules—the Multi Scale Instance PartialTCN and Biased GCN—to account for missing patterns.
+Biased Temporal Convolution Graph Network jointly captures the temporal dependencies and spatial structure. In particular, we inject bias into the two carefully developed modules—the Multi Scale Instance PartialTCN and Biased GCN—to account for missing patterns.
 
 
 
