@@ -1,1 +1,1 @@
-data
+Please download the metr-la dataset to this folder.
