@@ -15,7 +15,7 @@ Biased Temporal Convolution Graph Network that jointly captures the temporal dep
 
 
 ## Main Results
-|![Figure1](images/main_results.png)|
+|![Figure1](images/main_result.png)|
 |:--:| 
 | *Figure 2 main results.* |
 
