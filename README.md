@@ -1,4 +1,4 @@
-# BiaTCGNet
+# BiTGraph
 The code for Biased Temporal Convolution Graph Network for Time Series Forecasting with Missing Values. 
 
 
@@ -10,7 +10,7 @@ Biased Temporal Convolution Graph Network jointly captures the temporal dependen
 ## Overview
 |![Figure1](images/Framework.png)|
 |:--:| 
-| *Figure 1-a Overall structure of BiaTCGNet, Figure 1-b the structure of Biased GCN module.* |
+| *Figure 1-a Overall structure of BiTGraph, Figure 1-b the structure of Biased GCN module.* |
 
 
 
