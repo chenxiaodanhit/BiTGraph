@@ -42,7 +42,7 @@ parser.add_argument('--affine', type=int, default=0, help='RevIN-affine; True 1 
 parser.add_argument('--subtract_last', type=int, default=0, help='0: subtract mean; 1: subtract last')
 parser.add_argument('--decomposition', type=int, default=0, help='decomposition; True 1 False 0')
 parser.add_argument('--kernel_size', type=int, default=25, help='decomposition-kernel')
-
+parser.add_argument('--kernel_set', type=list, default=[2,3,5,7], help='kernel set')
 ##############transformer config############################
 parser.add_argument('--enc_in', type=int, default=node_number, help='encoder input size')
 parser.add_argument('--dec_in', type=int, default=node_number, help='decoder input size')
@@ -103,7 +103,7 @@ parser.add_argument('--grad-clip-val', type=float, default=5.)
 parser.add_argument('--loss-fn', type=str, default='l1_loss')
 parser.add_argument('--lr-scheduler', type=str, default=None)
 parser.add_argument('--seq_len',default=24,type=int)
-parser.add_argument('--history_len',default=24,type=int)
+# parser.add_argument('--history_len',default=24,type=int)
 parser.add_argument('--label_len',default=12,type=int)
 parser.add_argument('--pred_len',default=24,type=int)
 parser.add_argument('--horizon',default=24,type=int)
@@ -172,7 +172,7 @@ def test(model):
     # save config for logging
     os.makedirs(logdir, exist_ok=True)
 
-    train_dataloader,val_dataloader, test_dataloader, scaler = loaddataset(args.history_len,args.pred_len,args.mask_ratio,args.dataset)
+    train_dataloader,val_dataloader, test_dataloader, scaler = loaddataset(args.seq_len,args.pred_len,args.mask_ratio,args.dataset)
     model.eval()
     k=0
     with torch.no_grad():
@@ -204,7 +204,7 @@ def run():
 
 
 
-    model = Model(True, True, 2, node_number,
+    model = Model(True, True, 2, node_number,args.kernel_set,
                   'cuda:0', predefined_A=None,
                   dropout=0.3, subgraph_size=5,
                   node_dim=3,
