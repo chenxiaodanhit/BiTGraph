@@ -42,7 +42,7 @@ parser.add_argument('--affine', type=int, default=0, help='RevIN-affine; True 1 
 parser.add_argument('--subtract_last', type=int, default=0, help='0: subtract mean; 1: subtract last')
 parser.add_argument('--decomposition', type=int, default=0, help='decomposition; True 1 False 0')
 parser.add_argument('--kernel_size', type=int, default=25, help='decomposition-kernel')
-parser.add_argument('--kernel_set', type=list, default=[2,3,5,7], help='kernel set')
+parser.add_argument('--kernel_set', type=list, default=[2,3,6,7], help='kernel set')
 ##############transformer config############################
 parser.add_argument('--enc_in', type=int, default=node_number, help='encoder input size')
 parser.add_argument('--dec_in', type=int, default=node_number, help='decoder input size')
