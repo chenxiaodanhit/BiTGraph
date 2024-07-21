@@ -189,12 +189,12 @@ class dilated_1D(nn.Module):
         return x
 
 class dilated_inception(nn.Module):
-    def __init__(self, cin, cout, dilation_factor=2):
+    def __init__(self, cin, cout,kernel_set, dilation_factor=2):
 
         super(dilated_inception, self).__init__()
         self.tconv = nn.ModuleList()
         self.mconv=nn.ModuleList()
-        self.kernel_set = [2,3,6,7]
+        self.kernel_set = kernel_set#[2,3,6,7]
         cout = int(cout/len(self.kernel_set))
         for kern in self.kernel_set:
             self.tconv.append(weight_norm(nn.Conv2d(cin,cout,(1,kern),dilation=(1,dilation_factor))))
