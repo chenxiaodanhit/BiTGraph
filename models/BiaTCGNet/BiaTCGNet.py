@@ -3,11 +3,12 @@ import torch.nn as nn
 import torch
 from torch.nn.utils import weight_norm
 class Model(nn.Module):
-    def __init__(self, gcn_true, buildA_true, gcn_depth, num_nodes, device, predefined_A=None, static_feat=None, dropout=0.3, subgraph_size=5, node_dim=40, dilation_exponential=1, conv_channels=32, residual_channels=32, skip_channels=64, end_channels=128, seq_length=12, in_dim=2, out_len=12, out_dim=1, layers=3, propalpha=0.05, tanhalpha=3, layer_norm_affline=True):
+    def __init__(self, gcn_true, buildA_true, gcn_depth, num_nodes,kernel_set, device, predefined_A=None, static_feat=None, dropout=0.3, subgraph_size=5, node_dim=40, dilation_exponential=1, conv_channels=32, residual_channels=32, skip_channels=64, end_channels=128, seq_length=12, in_dim=2, out_len=12, out_dim=1, layers=3, propalpha=0.05, tanhalpha=3, layer_norm_affline=True):
         super(Model, self).__init__()
         self.gcn_true = gcn_true #true
         self.buildA_true = buildA_true #true
         self.num_nodes = num_nodes #137
+        self.kernel_set= kernel_set
         self.dropout = dropout
         self.predefined_A = predefined_A
         self.filter_convs = nn.ModuleList()
@@ -23,7 +24,7 @@ class Model(nn.Module):
                                     kernel_size=(1, 1))
         self.gc = graph_constructor(num_nodes, subgraph_size, node_dim, device, alpha=tanhalpha, static_feat=static_feat)
         self.seq_length = seq_length
-        kernel_size = 7
+        kernel_size = self.kernel_set[-1]#7
         if dilation_exponential>1:
             self.receptive_field = int(1+(kernel_size-1)*(dilation_exponential**layers-1)/(dilation_exponential-1))
         else:
@@ -35,15 +36,17 @@ class Model(nn.Module):
             else:
                 rf_size_i = i*layers*(kernel_size-1)+1
             new_dilation = 1
-            dilationsize=[18,12,6]
+            dilationsize=[]#[18,12,6]
             for j in range(1,layers+1):
                 if dilation_exponential > 1:
                     rf_size_j = int(rf_size_i + (kernel_size-1)*(dilation_exponential**j-1)/(dilation_exponential-1))
                 else:
                     rf_size_j = rf_size_i+j*(kernel_size-1)
+                assert (seq_length-(kernel_size-1)*j) >0, 'Please decrease the kernel size or increase the input length'
+                dilationsize.append(seq_length-(kernel_size-1)*j)
 
-                self.filter_convs.append(dilated_inception(residual_channels, conv_channels, dilation_factor=new_dilation))
-                self.gate_convs.append(dilated_inception(residual_channels, conv_channels, dilation_factor=new_dilation))
+                self.filter_convs.append(dilated_inception(residual_channels, conv_channels,kernel_set, dilation_factor=new_dilation))
+                self.gate_convs.append(dilated_inception(residual_channels, conv_channels,kernel_set, dilation_factor=new_dilation))
                 self.residual_convs.append(nn.Conv2d(in_channels=conv_channels,
                                                     out_channels=residual_channels,
                                                  kernel_size=(1, 1)))
