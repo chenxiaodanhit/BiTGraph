@@ -1,35 +1,31 @@
-# BiTGraph
-The code for Biased Temporal Convolution Graph Network for Time Series Forecasting with Missing Values. 
+# BiTGraph (ICLR 2024)
+The code for paper: [Biased Temporal Convolution Graph Network for Time Series Forecasting with Missing Values](https://openreview.net/pdf?id=O9nZCwdGcG). 
 
+# Getting Start
 
-Biased Temporal Convolution Graph Network jointly captures the temporal dependencies and spatial structure. In particular, we inject bias into the two carefully developed modules—the Multi Scale Instance PartialTCN and Biased GCN—to account for missing patterns.
-
-
-
-
-## Overview
-|![Figure1](images/Framework.png)|
-|:--:| 
-| *Figure 1-a Overall structure of BiTGraph, Figure 1-b the structure of Biased GCN module.* |
-
-
-
-## Main Results
-|![Figure1](images/main_result.png)|
-|:--:| 
-| *Figure 2 main results.* |
-
-
-## Get Started
-
-1. Install Python>=3.8, PyTorch 1.8.0.
+1. Install requirements. `pip install -r requirements.txt`
 2. Download data.
-3. Train the model.
-   python main.py --epochs 200 --mask_ratio 0.2
-4. Test the model.
-   python test_forecasting.py --epochs 200 --mask_ratio 0.2
+
+  Download Metr-LA, ETTh1, Electricity, PEMS datasets from [here](https://drive.google.com/file/d/1uOCHzx-xEAIfrPAiyQIy7pgwPvE6itj3/view?usp=sharing). Obtain BeijingAir dataset from [Brits](https://papers.nips.cc/paper_files/paper/2018/file/734e6bfcd358e25ac1db0a4241b95651-Paper.pdf). Create a seperate folder ./dataset and put all the files in the directory.
+3. Model Training.
+   
+` python main.py --epochs 200 --mask_ratio 0.2 --dataset-name Metr`
+ 
+4. Model Testing.
+
+`python test_forecasting.py --epochs 200 --mask_ratio 0.2 --dataset-name Metr`
 
 
+# Citation
+
+```
+@inproceedings{BiTGraph, 
+  title={Biased Temporal Convolution Graph Network for Time Series Forecasting with Missing Values},
+  author={Chen, Xiaodan and Li, Xiucheng and Liu, Bo and Li, Zhijun},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2024}
+}
+```
 
 
 
